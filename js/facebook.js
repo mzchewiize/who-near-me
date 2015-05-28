@@ -71,6 +71,7 @@
 							'<a href="index.php"><div class="img-profile"><img src="https://graph.facebook.com/'+ response['id'] +'/picture?type=normal" style="float:right"></div></a><br/><div class="text-profile" style="float:right;margin-right:5px;">Hello, ' + response['first_name'] +'</div>'
 							+ ' <br/><div style="float:right;margin-right:5px"><a href="#" onclick="loadHistory()" target="_self">View Search History</a> | <a href="#" onclick="fbLogoutUser()">logout</a></div>');
 						$('#facebook').hide();
+						$('#sessionId').val(response['id']);
             		});
 
 				}

@@ -38,16 +38,20 @@ require_once('db-connect.php');
 			$connection = new mongoDBConnection();
 			$db = $connection->getConnection('users');
 
-			$search = array(
+
+			$place = $db->findOne(
+				array(
+					'id' => $id,
+					'place' =>
+						array('$elemMatch' => array('placeName' => $placeName))));
+
+			if(empty($place))
+			{
+				$search = array(
 					'placeName' => $placeName,
 					'lat' => $lat,
 					'lng' => $lng);
 
-			$place = $db->findOne(
-				array('place' => array('$elemMatch' => array('placeName' => $placeName))));
-
-			if(empty($place))
-			{
 				$result = $db->update(
 					array(
 						'id' => $id
