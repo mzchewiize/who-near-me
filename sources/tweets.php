@@ -26,7 +26,6 @@ if ($item) {
 	$result = $twitter->setGetfield($getfield)
     ->buildOauth($url, $requestMethod)
     ->performRequest();
-	$m->flush();
 	$m->set($getfield, $result, 0, $cache);
 	echo $m->get($getfield);
 }
